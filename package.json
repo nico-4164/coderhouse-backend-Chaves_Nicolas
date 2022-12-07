@@ -1,0 +1,30 @@
+{
+  "name": "coderhouse",
+  "version": "1.0.0",
+  "description": "proyecto coderhouse",
+  "main": "index.js",
+
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nico-4164/coderhouse-backend.git"
+  },
+
+  "author": "Nicolas Chaves",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nico-4164/coderhouse-backend/issues"
+  },
+
+  "homepage": "https://github.com/nico-4164/coderhouse-backend#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "moment": "^2.29.4"
+  },
+
+  "keywords": [],
+  "type": "module"
+}

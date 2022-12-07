@@ -1,8 +1,6 @@
+import fs from 'fs';
 
-const fs = require('fs')
-const { json } = require('stream/consumers')
-
-class ProductManager{
+export class ProductManager{
 
     constructor(path){
         this.path = path
@@ -139,9 +137,10 @@ class ProductManager{
     }
 }
 
+/*
 async function run(){
     console.log("inicio del codigo")
-    const productManager=new ProductManager("../archivos/productos.json");
+    const productManager=new ProductManager("../CoderHouse/archivos/productos.json");
 
     await productManager.addProduct("Water Cooler AM4", "refrigeracion liquida para CPU Ryzen", "20000", "http:imagen-1", "BEASVC001", "3");
     console.log(await productManager.getProducts())
@@ -159,5 +158,5 @@ async function run(){
     console.log("final del codigo");
     console.log(await productManager.getProducts())
 }
-
-run()
+*/
+//run()
