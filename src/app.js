@@ -18,6 +18,6 @@ app.get('/product', (req,res)=>{
 })
 
 app.use('/api/productos', productosRouter)
-app.use('/api/carrito', carritoRouter)
+app.use('/api/carts', carritoRouter)
 
 app.listen(8081, () => console.log("Servidor arriba en el puerto 8081"))

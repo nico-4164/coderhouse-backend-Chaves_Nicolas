@@ -51,15 +51,14 @@ export class ProductManager{
             .then(products => {
                 products.push(producto)
                 return products
-            }).then(productNew => fs.promises.writeFile(this.path, JSON.stringify(productNew)))
+            })
+            .then(productNew => fs.promises.writeFile(this.path, JSON.stringify(productNew)))
         }
     }
 
     async updateProduct(id, tittle, description, price, thumbnail, code, stock){
 
         let productos = await this.getProducts()
-        console.log("log antes del update");
-        console.log(productos);
 
         for (let i = 0; i < productos.length; i++) {
             const p = productos[i];
@@ -75,8 +74,6 @@ export class ProductManager{
             } 
             
         }
-        console.log("log despues del update");
-        console.log(productos);
         fs.promises.writeFile(this.path, JSON.stringify(productos))
         
     }
@@ -116,9 +113,6 @@ export class ProductManager{
                 return p;
             } 
         }
-        
-        console.log("Product not found");
-        
     }
 
     async getNextId(){
