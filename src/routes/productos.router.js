@@ -7,18 +7,15 @@ const productos= new ProductManager("./archivos/productos.json");
 router.get('/', async (req, res) => {
 
     let productLimit = req.query.limite;
-    let list=[]
     
     if (!productLimit || (productLimit >= productos.length)) {
-        res.json(await productos.getProducts())     
+        res.send(await productos.getProducts())     
     } else {
-        for (let i = 0; i < productLimit; i++) {
-            const element = productos[i];
-            list.push(element);
+        res.send(await productos.getProductsWithLimit(parseInt(productLimit,10)))
         }
-        res.send(await productos.getProducts())
-    }
 })
+
+
 
 router.get('/:pid', async (req, res) => {
 
@@ -36,11 +33,22 @@ router.get('/:pid', async (req, res) => {
     }
 })
 
+router.put("/:pid", (req, res) => {
+
+    const pid = req.params.pid;
+    const productUpdate = req.body;
+
+    productos.updateProduct(pid, productUpdate.tittle, productUpdate.description, productUpdate.price, productUpdate.thumbnail, productUpdate.code, productUpdate.stock)
+})
+
 router.post('/', async (req, res) => {
     const producto = req.body
 
-    await productos.addProduct(producto.tittle, producto.description, producto.price , producto.thumbnail, producto.code , producto.stock);
-    res.send({status: 'success'})
+    await productos.addProduct(producto.tittle, producto.description, producto.code, producto.price, producto.stock, producto.category, producto.thumbnail);
+
+    let mensaje=productos.getMensaje();
+
+    res.send({status: mensaje})
 })
 
 router.delete('/:pid', (req, res) => {

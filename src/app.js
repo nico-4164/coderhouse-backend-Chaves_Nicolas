@@ -12,11 +12,6 @@ app.use('/static', express.static('public'))
 
 const productos = await productManager.getProducts();
 
-
-app.get('/product', (req,res)=>{
-    res.send("Hola a todos, pero ahora desde express")    
-})
-
 app.use('/api/productos', productosRouter)
 app.use('/api/carts', carritoRouter)
 
