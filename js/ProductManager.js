@@ -72,7 +72,7 @@ export class ProductManager{
         }
     }
 
-    async updateProduct(id, tittle, description, price, thumbnail, code, stock){
+    async updateProduct(id, tittle, description,code, price, stock, status, category, thumbnail){
 
         let productos = await this.getProducts()
 
@@ -80,12 +80,17 @@ export class ProductManager{
             const p = productos[i];
 
             if (p.id == id) {
+
+                console.log("entro en la edicion");
+                
                 p.tittle=tittle;
                 p.description=description;
-                p.price=price;
-                p.thumbnail=thumbnail;
                 p.code=code;
+                p.price=price;
+                p.status=status;
                 p.stock=stock;
+                p.category=category;
+                p.thumbnail=thumbnail;
                 i=productos.length;
             } 
             
@@ -133,6 +138,7 @@ export class ProductManager{
                 return p;
             } 
         }
+        return {status: 'El producto que desea modificar no se encontro'}
     }
 
     async getNextId(){

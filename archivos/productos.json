@@ -1,1 +1,52 @@
-[]
+[
+    {
+        "id": 1,
+        "tittle": "producto de prueba",
+        "description": "producto para ver como ingresa en la lista de productos",
+        "code": "f0275",
+        "price": 20000,
+        "status": true,
+        "stock": 0,
+        "category": "componentes de prueba"
+    },
+    {
+        "id": 2,
+        "tittle": "producto de prueba",
+        "description": "producto para ver como ingresa en la lista de productos",
+        "code": "f02705",
+        "price": 20000,
+        "status": true,
+        "stock": 0,
+        "category": "componentes de prueba"
+    },
+    {
+        "id": 3,
+        "tittle": "producto de prueba modificado",
+        "description": "producto para ver como ingresa en la lista de productos modificado",
+        "code": "f0275",
+        "price": 20000,
+        "status": 0,
+        "stock": false,
+        "category": "componentes de prueba modificado"
+    },
+    {
+        "id": 4,
+        "tittle": "producto de prueba",
+        "description": "producto para ver como ingresa en la lista de productos",
+        "code": "f0505",
+        "price": 20000,
+        "status": true,
+        "stock": 0,
+        "category": "componentes de prueba"
+    },
+    {
+        "id": 5,
+        "tittle": "producto de prueba",
+        "description": "producto para ver como ingresa en la lista de productos",
+        "code": "f05305",
+        "price": 20000,
+        "status": true,
+        "stock": 0,
+        "category": "componentes de prueba"
+    }
+]

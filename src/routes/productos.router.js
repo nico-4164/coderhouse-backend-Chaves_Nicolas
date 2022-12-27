@@ -6,7 +6,7 @@ const productos= new ProductManager("./archivos/productos.json");
 
 router.get('/', async (req, res) => {
 
-    let productLimit = req.query.limite;
+    let productLimit = req.query.limit;
     
     if (!productLimit || (productLimit >= productos.length)) {
         res.send(await productos.getProducts())     
@@ -33,12 +33,13 @@ router.get('/:pid', async (req, res) => {
     }
 })
 
-router.put("/:pid", (req, res) => {
+router.put("/:pid", async (req, res) => {
 
     const pid = req.params.pid;
     const productUpdate = req.body;
+    await productos.updateProduct(parseInt(pid,10), productUpdate.tittle, productUpdate.description, productUpdate.code, productUpdate.price, productUpdate.status, productUpdate.stock, productUpdate.category, productUpdate.thumbnail)
 
-    productos.updateProduct(pid, productUpdate.tittle, productUpdate.description, productUpdate.price, productUpdate.thumbnail, productUpdate.code, productUpdate.stock)
+    res.send(await productos.getProductById(parseInt(pid,10)))
 })
 
 router.post('/', async (req, res) => {

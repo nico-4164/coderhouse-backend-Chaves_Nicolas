@@ -1,6 +1,7 @@
 import {ProductManager} from '../js/ProductManager.js';
 import carritoRouter from './routes/carrito.router.js'
 import express from 'express'
+import handlebars from 'express-handlebars';
 import productosRouter from './routes/productos.router.js'
 
 const productManager= new ProductManager("../CoderHouse/archivos/productos.json");
