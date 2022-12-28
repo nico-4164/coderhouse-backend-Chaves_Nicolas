@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
     let productLimit = req.query.limit;
     
     if (!productLimit || (productLimit >= productos.length)) {
-        res.send(await productos.getProducts())     
+        res.send(await productos.getProducts())    
     } else {
         res.send(await productos.getProductsWithLimit(parseInt(productLimit,10)))
         }
