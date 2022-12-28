@@ -37,7 +37,19 @@ socketServer.on('connection', async socket => {
 
         console.log("SERVER: ", {data});
 
-        productManager.addProduct(data.tittle, data.desciption, data.code, data.price, data.stock, data.category, data.thumbnail)
+        await productManager.addProduct(data.tittle, data.desciption, data.code, data.price, data.stock, data.category, data.thumbnail)
+        const productos = await productManager.getProducts();
+
+        console.log(productos)
+        socket.emit('update',productos)
+        
+    })
+
+    socket.on('delete', async data => {
+
+        console.log("SERVER: ", data);
+
+        await productManager.deleteProduct(parseInt(data,10))
         const productos = await productManager.getProducts();
 
         console.log(productos)

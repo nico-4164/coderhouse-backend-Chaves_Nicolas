@@ -2,7 +2,7 @@
     <h1>PRODUCTOS EN TIEMPO REAL</h1>
 
     <h3>Agregar producto nuevo</h3>
-    <form >
+    <form>
         <label for="fname">Ingrese nombre del producto:</label><br>
         <input type="text" id="tittle"><br>
         <label for="lname">Ingrese descipccion del producto:</label><br>
@@ -15,15 +15,22 @@
         <input type="text" id="stock"><br>
         <label for="lname">Ingrese categoria del producto:</label><br>
         <input type="text" id="category"><br><br>
-    </form>
+        <button id="btnADD">agregar producto</button>
+    </form><br><br>
     
-    <button id="btn">agregar producto</button>
+    <h3>Eliminar producto</h3>
+    <form>
+        <label for="lname">Ingrese el id del producto que desea eliminar:</label><br>
+        <input type="text" id="id"><br><br>
+        <button id="btnDelete">eliminar producto</button>
+    </form>
 
     <div id="contenedor-productos">
         {{#each productos}}
             <div>
                 <h3>{{this.tittle}}</h3>
                 <p>{{this.description}}</p>
+                <p>Id del producto: {{this.id}}</p>
                 <p>Precio: {{this.price}}</p>
                 <p>Stock: {{this.stock}}</p>
                 <p>{{this.category}}</p>
@@ -37,7 +44,7 @@
     <script>
         const socket = io();
 
-        document.getElementById('btn').onclick = async () =>{
+        document.getElementById('btnADD').onclick = () =>{
 
             let tittle = document.getElementById("tittle").value;
             let desciption = document.getElementById("desciption").value;
@@ -57,25 +64,15 @@
             
             socket.emit('pedido', producto)
         }
-        socket.on('update', productos => {
 
-            let contenedorProductos = document.getElementById("contenedor-productos");
-            contenedorProductos.innerHTML = ""
+        document.getElementById('btnDelete').onclick = async () =>{
 
-            for (const producto of productos) {
-            contenedorProductos.innerHTML += 
-            `
-            <div>
-                <h3>${producto.tittle}</h3>
-                <p>${producto.description}</p>
-                <p>Precio: ${producto.price}</p>
-                <p>Stock: ${producto.stock}</p>
-                <p>${producto.category}</p>
-                <hr>
-            </div>
-            `
+            let id = document.getElementById("id").value;
+        
+        socket.emit('delete', id)
         }
-        })
+
+        socket.on('update', console.log)
 
     </script>
 
