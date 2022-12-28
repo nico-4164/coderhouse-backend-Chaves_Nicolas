@@ -1,5 +1,5 @@
-import {Carrito} from '../../js/carrito.js'
-import {ProductManager} from '../../js/ProductManager.js';
+import {Carrito} from '../public/js/carrito.js'
+import {ProductManager} from '../public/js/ProductManager.js';
 import { Router } from 'express'
 
 const router = Router()
